@@ -1,25 +1,19 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath>
-#include <locale>
 
 int main() {
-    setlocale(LC_ALL, "Russian"); 
-    double a, b;
-    std::cout << "Введите первое число: ";
-    std::cin >> a;
-    std::cout << "Введите второе число: ";
-    std::cin >> b;
+    int totalSeconds;
+    std::cout << "Введите количество секунд: ";
+    std::cin >> totalSeconds;
 
-    std::cout << std::fixed << std::setprecision(2);
-    std::cout << "Сумма: " << a + b << "\n";
-    std::cout << "Разность: " << a - b << "\n";
-    std::cout << "Произведение: " << a * b << "\n";
-    std::cout << "Деление: " << a / b << "\n";
-    std::cout << "Целочисленное деление: "
-              << static_cast<int>(a) / static_cast<int>(b) << "\n";
-    std::cout << "Остаток: " << std::fmod(a, b) << "\n";
-    std::cout << "Степень: " << std::pow(a, b) << "\n";
+    int hours = totalSeconds / 3600;
+    int minutes = (totalSeconds % 3600) / 60;
+    int seconds = totalSeconds % 60;
+
+    std::cout << std::setfill('0')
+              << std::setw(2) << hours << ":"
+              << std::setw(2) << minutes << ":"
+              << std::setw(2) << seconds << "\n";
 
     return 0;
 }
