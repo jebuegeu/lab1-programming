@@ -1,33 +1,24 @@
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <algorithm>
-#include <cctype>
-#include <locale>
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-    std::string text;
-    std::cout << "Введите строку: ";
-    std::getline(std::cin, text);
+    double a, b, c;
+    std::cout << "Введите первое число: ";
+    std::cin >> a;
+    std::cout << "Введите второе число: ";
+    std::cin >> b;
+    std::cout << "Введите третье число: ";
+    std::cin >> c;
 
-    std::cout << "Длина: " << text.length() << "\n";
+    double average = (a + b + c) / 3.0;
+    double minimum = std::min({a, b, c});
+    double maximum = std::max({a, b, c});
 
-    std::string upper = text;
-    std::transform(upper.begin(), upper.end(), upper.begin(),
-                   [](unsigned char c) { return std::toupper(c); });
-    std::cout << "Верхний регистр: " << upper << "\n";
-
-    std::string lower = text;
-    std::transform(lower.begin(), lower.end(), lower.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
-    std::cout << "Нижний регистр: " << lower << "\n";
-
-    std::cout << "Первый символ: " << text.front() << "\n";
-    std::cout << "Последний символ: " << text.back() << "\n";
-
-  
-    int spaces = std::count(text.begin(), text.end(), ' ');
-    std::cout << "Количество пробелов: " << spaces << "\n";
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Среднее арифметическое: " << average << "\n";
+    std::cout << "Минимум: " << minimum << "\n";
+    std::cout << "Максимум: " << maximum << "\n";
 
     return 0;
 }
