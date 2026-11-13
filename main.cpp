@@ -1,20 +1,28 @@
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 
 int main() {
-    int age;
-    std::cout << "Введите возраст: ";
-    std::cin >> age;
+    double a, b, c;
+    std::cout << "Введите a, b, c: ";
+    std::cin >> a >> b >> c;
 
-    if (age < 0) {
-        std::cout << "Некорректный возраст\n";
-    } else if (age <= 12) {
-        std::cout << "Ребёнок\n";
-    } else if (age <= 17) {
-        std::cout << "Подросток\n";
-    } else if (age <= 64) {
-        std::cout << "Взрослый\n";
+    if (a == 0) {
+        std::cout << "Это не квадратное уравнение\n";
     } else {
-        std::cout << "Пожилой\n";
+        double D = b*b - 4*a*c;
+        std::cout << std::fixed << std::setprecision(2);
+        
+        if (D > 0) {
+            double x1 = (-b + std::sqrt(D)) / (2*a);
+            double x2 = (-b - std::sqrt(D)) / (2*a);
+            std::cout << "Два корня: x1 = " << x1 << ", x2 = " << x2 << "\n";
+        } else if (D == 0) {
+            double x = -b / (2*a);
+            std::cout << "Один корень: x = " << x << "\n";
+        } else {
+            std::cout << "Нет действительных корней\n";
+        }
     }
     return 0;
 }
