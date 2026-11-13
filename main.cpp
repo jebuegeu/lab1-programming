@@ -1,88 +1,28 @@
 #include <iostream>
-#include <windows.h>
 #include <cmath>
+#include <iomanip>
 
-int main(){
-    SetConsoleCP(65001);
-    SetConsoleOutputCP(65001);
-    std::cout<< " Введите число: ";
-    int nonrevers;
-    std::cin >> nonrevers;
+int main() {
+    double a, b, c;
+    std::cout << "Введите a, b, c: ";
+    std::cin >> a >> b >> c;
 
-    nonrevers = std::abs(nonrevers);
-
-    int chengebl = nonrevers;
-
-    int k = 0;
-    while (chengebl > 0){
-        chengebl = chengebl /10;
-        k += 1;
-    }
-
-    int k_status = 0;
-    if (fmod(k,2) == 0){
-        k_status = 1;
+    if (a == 0) {
+        std::cout << "Это не квадратное уравнение\n";
     } else {
-        k_status = 0;
-    }
-
-    int first_part = 0;
-    int second_part = 0;
-    int chenge = nonrevers;
-
-    // Если число меньше 10, то оно является палиндромом
-    if ((nonrevers - 10 <0) && (nonrevers - 10 > -10)){
-        std::cout<<"Число является палиндромом\n";
-        std::cin.get();
-        return 0;
-    }
-
-    if (k_status == 1){
-    // Если число чётное
-
-        for (int i = 0;k/2>i;i++){
-        second_part = second_part * 10 + chenge % 10;;
-        chenge = chenge / 10;
-
-    }
-        first_part = nonrevers /pow(10,k/2);
-
-        {
-            if (first_part == second_part){
-                std::cout<<"Число является палиндромом\n";
-                std::cin.get();
-                return 0;
-            } else {
-                std::cout<<"Число не является палиндромом\n";
-                std::cin.get();
-                return 0;
-            }
-        }
-    }else{
-
-    // если число чётное
-        for (int i = 0;k/2>i;i++){
-        second_part = second_part * 10 + chenge % 10;;
-        chenge = chenge / 10;
-
-    }
-            first_part = nonrevers / pow(10,k/2+1);
-            std::cout<<first_part<<"\n";
-            std::cout<<second_part<<"\n";
-
-            {
-            if (first_part == second_part){
-                std::cout<<"Число является палиндромом\n";
-                std::cin.get();
-                return 0;
-            } else {
-                std::cout<<"Число не является палиндромом\n";
-                std::cin.get();
-                return 0;
-            }
+        double D = b*b - 4*a*c;
+        std::cout << std::fixed << std::setprecision(2);
+        
+        if (D > 0) {
+            double x1 = (-b + std::sqrt(D)) / (2*a);
+            double x2 = (-b - std::sqrt(D)) / (2*a);
+            std::cout << "Два корня: x1 = " << x1 << ", x2 = " << x2 << "\n";
+        } else if (D == 0) {
+            double x = -b / (2*a);
+            std::cout << "Один корень: x = " << x << "\n";
+        } else {
+            std::cout << "Нет действительных корней\n";
         }
     }
-
-    std::cin.get();
     return 0;
 }
