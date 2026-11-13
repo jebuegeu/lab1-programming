@@ -1,30 +1,19 @@
 #include <iostream>
 
 int main() {
-    int number;
-    std::cout << "Введите число: ";
-    std::cin >> number;
+    double a, b, c;
+    std::cout << "Введите три числа: ";
+    std::cin >> a >> b >> c;
 
-    if (number % 2 == 0) {
-        std::cout << "Число " << number << " - чётное\n";
+    double maximum;
+    if (a >= b && a >= c) {
+        maximum = a;
+    } else if (b >= a && b >= c) {
+        maximum = b;
     } else {
-        std::cout << "Число " << number << " - нечётное\n";
+        maximum = c;
     }
 
-    // Дополнительно:
-    if (number % 3 == 0) {
-        std::cout << "Число " << number << " – делится на 3\n";
-    } else {
-        std::cout << "Число " << number << " – не делится на 3\n";
-    }
-
-    if (number > 0) {
-        std::cout << "Число положительное\n";
-    } else if (number < 0) {
-        std::cout << "Число отрицательное\n";
-    } else {
-        std::cout << "Число равно нулю\n";
-    }
-
+    std::cout << "Максимум: " << maximum << "\n";
     return 0;
 }
